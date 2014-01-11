@@ -13,10 +13,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     oimapp.vm.hostname = "oimapp.example.com"
 
-    #oimapp.vm.synced_folder "."                    , "/vagrant", :mount_options => ["dmode=777","fmode=777"]
-    #oimapp.vm.synced_folder "/Users/edwin/software", "/software"
-    oimapp.vm.synced_folder "."                    , "/vagrant" , type: "nfs"
-    oimapp.vm.synced_folder "/Users/edwin/software", "/software", type: "nfs"
+    oimapp.vm.synced_folder "."                    , "/vagrant", :mount_options => ["dmode=777","fmode=777"]
+    oimapp.vm.synced_folder "/Users/edwin/software", "/software"
+    #oimapp.vm.synced_folder "."                    , "/vagrant" , type: "nfs"
+    #oimapp.vm.synced_folder "/Users/edwin/software", "/software", type: "nfs"
 
   
     oimapp.vm.network :private_network, ip: "10.10.10.10"
@@ -50,10 +50,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     oimdb.vm.hostname = "oimdb.example.com"
     oimdb.vm.network :private_network, ip: "10.10.10.5"
 
-    #oimdb.vm.synced_folder ".", "/vagrant", :mount_options => ["dmode=777","fmode=777"]
-    #oimdb.vm.synced_folder "/Users/edwin/software", "/software"
-    oimdb.vm.synced_folder ".", "/vagrant", type: "nfs"
-    oimdb.vm.synced_folder "/Users/edwin/software", "/software", type: "nfs"
+    oimdb.vm.synced_folder ".", "/vagrant", :mount_options => ["dmode=777","fmode=777"]
+    oimdb.vm.synced_folder "/Users/edwin/software", "/software"
+    #oimdb.vm.synced_folder ".", "/vagrant", type: "nfs"
+    #oimdb.vm.synced_folder "/Users/edwin/software", "/software", type: "nfs"
   
     oimdb.vm.provider :virtualbox do |vb|
       vb.customize ["modifyvm"     , :id, "--memory", "2000"]
