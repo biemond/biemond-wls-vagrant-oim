@@ -9,6 +9,11 @@ node 'oimdb'  {
 # operating settings for Database & Middleware
 class oimdb_os {
 
+  $default_params = {}
+  $host_instances = hiera('hosts', [])
+  create_resources('host',$host_instances, $default_params)
+
+
   service { iptables:
         enable    => false,
         ensure    => false,

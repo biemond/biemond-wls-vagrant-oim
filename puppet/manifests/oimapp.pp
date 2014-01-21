@@ -27,6 +27,19 @@ class os {
   $host_instances = hiera('hosts', [])
   create_resources('host',$host_instances, $default_params)
 
+
+#  exec { "remove localhost":
+#    command => "/bin/sed -e '/'127.0.0.1'/ d' /etc/hosts > /tmp/hosts.tmp && mv /tmp/hosts.tmp /etc/hosts",
+#    onlyif  => "/bin/grep -c \"127.0.0.1\$(echo -ne \\\t)oimapp\" /etc/hosts",
+#    require => Host['oimdb'],
+#  }
+#
+#  exec { "add localhost":
+#    command => "/bin/echo '127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4' >>/etc/hosts",
+#    unless  => "/bin/grep -c \"127.0.0.1\" /etc/hosts",
+#    require => Exec["remove localhost"],
+#  }
+#
   exec { "create swap file":
     command => "/bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=8192",
     creates => "/var/swap.1",
